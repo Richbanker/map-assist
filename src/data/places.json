@@ -1,0 +1,119 @@
+[
+  {
+    "id": "1",
+    "name": "Кафе 'У Парка'",
+    "description": "Уютное кафе с видом на парк, отличный кофе и десерты",
+    "category": "cafe",
+    "coordinates": [55.7558, 37.6176],
+    "address": "ул. Тверская, 1",
+    "rating": 4.5,
+    "isFavorite": false,
+    "images": [
+      "https://picsum.photos/seed/cafe-park/800/600",
+      "https://picsum.photos/seed/cafe-park-2/800/600"
+    ],
+    "tags": ["кофе", "десерты", "парк"],
+    "createdAt": "2024-01-15T10:00:00Z",
+    "updatedAt": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "name": "Ресторан 'Москва'",
+    "description": "Традиционная русская кухня в историческом здании",
+    "category": "restaurant",
+    "coordinates": [55.7539, 37.6208],
+    "address": "Красная площадь, 1",
+    "rating": 4.8,
+    "isFavorite": true,
+    "images": [
+      "https://picsum.photos/seed/moscow-rest/800/600",
+      "https://picsum.photos/seed/moscow-rest-2/800/600"
+    ],
+    "tags": ["русская кухня", "история", "премиум"],
+    "createdAt": "2024-01-10T12:00:00Z",
+    "updatedAt": "2024-01-10T12:00:00Z"
+  },
+  {
+    "id": "3",
+    "name": "Музей современного искусства",
+    "description": "Современные выставки и инсталляции",
+    "category": "culture",
+    "coordinates": [55.7494, 37.6200],
+    "address": "ул. Петровка, 25",
+    "rating": 4.2,
+    "isFavorite": false,
+    "images": [
+      "https://picsum.photos/seed/modern-art/800/600"
+    ],
+    "tags": ["искусство", "выставки", "современность"],
+    "createdAt": "2024-01-05T09:00:00Z",
+    "updatedAt": "2024-01-05T09:00:00Z"
+  },
+  {
+    "id": "4",
+    "name": "Парк Горького",
+    "description": "Центральный парк культуры и отдыха",
+    "category": "nature",
+    "coordinates": [55.7296, 37.6000],
+    "address": "Крымский вал, 9",
+    "rating": 4.6,
+    "isFavorite": true,
+    "images": [
+      "https://picsum.photos/seed/gorky-park/800/600",
+      "https://picsum.photos/seed/gorky-park-2/800/600"
+    ],
+    "tags": ["парк", "отдых", "природа"],
+    "createdAt": "2024-01-01T08:00:00Z",
+    "updatedAt": "2024-01-01T08:00:00Z"
+  },
+  {
+    "id": "5",
+    "name": "Торговый центр 'Европейский'",
+    "description": "Крупный торговый центр с множеством магазинов",
+    "category": "shop",
+    "coordinates": [55.7445, 37.5347],
+    "address": "пл. Киевского вокзала, 2",
+    "rating": 4.0,
+    "isFavorite": false,
+    "images": [
+      "https://picsum.photos/seed/europe-mall/800/600"
+    ],
+    "tags": ["шоппинг", "развлечения", "еда"],
+    "createdAt": "2024-01-12T11:00:00Z",
+    "updatedAt": "2024-01-12T11:00:00Z"
+  },
+  {
+    "id": "6",
+    "name": "Центральный Детский Магазин",
+    "description": "Легендарный детский магазин с аттракционами и смотровой площадкой.",
+    "category": "shop",
+    "coordinates": [55.7597, 37.6222],
+    "address": "Театральный пр-д, 5/1",
+    "rating": 4.7,
+    "isFavorite": false,
+    "images": [
+      "https://picsum.photos/seed/cdm/800/600"
+    ],
+    "tags": ["дети", "шоппинг", "развлечения", "смотровая"],
+    "createdAt": "2024-02-01T14:00:00Z",
+    "updatedAt": "2024-02-01T14:00:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Парк 'Зарядье'",
+    "description": "Современный парк с уникальным ландшафтом, парящим мостом и концертным залом.",
+    "category": "nature",
+    "coordinates": [55.7514, 37.6282],
+    "address": "ул. Варварка, 6, стр. 1",
+    "rating": 4.9,
+    "isFavorite": true,
+    "images": [
+      "https://picsum.photos/seed/zaryadye/800/600",
+      "https://picsum.photos/seed/zaryadye-2/800/600",
+      "https://picsum.photos/seed/zaryadye-3/800/600"
+    ],
+    "tags": ["парк", "природа", "архитектура", "парящий мост"],
+    "createdAt": "2024-02-05T18:00:00Z",
+    "updatedAt": "2024-02-05T18:00:00Z"
+  }
+] 
