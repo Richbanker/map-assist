@@ -1,5 +1,8 @@
 # Map Assist 🗺️
 
+
+[![Просмотры README](https://vbr.nathanchung.dev/badge?page_id=Richbanker.map-assist&text=README_Views)](https://github.com/Richbanker/map-assist)
+
 Интерактивное веб-приложение для работы с картами и управления местами. Позволяет находить, сохранять и управлять интересными местами на карте.
 
 ## 📋 Описание
