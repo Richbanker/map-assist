@@ -36,10 +36,7 @@ export const usePlacesStore = create<PlacesState>((set, get) => ({
   error: null,
 
   fetchPlaces: () => {
-    // Имитация задержки сети
-    setTimeout(() => {
-      set({ places: placesData as Place[], initialPlaces: placesData as Place[] });
-    }, 200);
+    set({ places: placesData as Place[], initialPlaces: placesData as Place[] });
   },
 
   searchPlaces: async (query: string) => {
