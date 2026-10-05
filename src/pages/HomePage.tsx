@@ -7,15 +7,13 @@ import { usePlacesStore } from '../store/usePlacesStore';
 import MyLocationButton from '../components/MyLocationButton';
 
 const HomePage = () => {
-  const { fetchPlaces, fetchUserLocation } = usePlacesStore();
+  const { fetchPlaces } = usePlacesStore();
   const [isFiltersOpen, setIsFiltersOpen] = useState(true);
 
   useEffect(() => {
     // При первой загрузке страницы, получаем начальные места
-    // и пытаемся определить геолокацию пользователя.
     fetchPlaces();
-    fetchUserLocation();
-  }, [fetchPlaces, fetchUserLocation]);
+  }, [fetchPlaces]);
 
   const toggleFiltersPanel = () => setIsFiltersOpen((prev) => !prev);
 
