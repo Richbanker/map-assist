@@ -25,7 +25,7 @@ export function applyFilters(places: Place[], filters: Filter): Place[] {
 
   // Фильтр по поисковому запросу
   if (filters.searchQuery) {
-    const query = filters.searchQuery.toLowerCase();
+    const query = filters.searchQuery.trim().toLowerCase();
     filteredPlaces = filteredPlaces.filter(place =>
       place.name.toLowerCase().includes(query) ||
       place.description.toLowerCase().includes(query) ||
