@@ -169,14 +169,15 @@ export const searchPlacesByQuery = async (query: string, options: SearchOptions 
   )}&format=json&addressdetails=1&extratags=1&namedetails=1&accept-language=ru`;
 
   // Добавляем viewbox, если есть местоположение и радиус
-  if (userLocation && radius) {
+  if (userLocation && radius !== undefined && Number.isFinite(radius) && radius > 0) {
     const lat = userLocation.latitude;
     const lon = userLocation.longitude;
-    // Очень грубая конвертация км в градусы для viewbox
-    const radiusInDegrees = radius / 111.32; 
-    const lon1 = lon - radiusInDegrees;
+    // One degree of longitude gets shorter away from the equator.
+    const radiusInDegrees = radius / 111.32;
+    const longitudeRadius = radiusInDegrees / Math.max(Math.abs(Math.cos(lat * Math.PI / 180)), 0.01);
+    const lon1 = lon - longitudeRadius;
     const lat1 = lat - radiusInDegrees;
-    const lon2 = lon + radiusInDegrees;
+    const lon2 = lon + longitudeRadius;
     const lat2 = lat + radiusInDegrees;
     url += `&viewbox=${lon1},${lat1},${lon2},${lat2}&bounded=1`;
   }
