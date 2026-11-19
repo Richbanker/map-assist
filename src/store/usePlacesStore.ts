@@ -26,6 +26,8 @@ interface PlacesState {
   resetToInitial: () => void;
 }
 
+let activeSearchId = 0;
+
 export const usePlacesStore = create<PlacesState>((set, get) => ({
   places: [],
   initialPlaces: [],
@@ -40,6 +42,7 @@ export const usePlacesStore = create<PlacesState>((set, get) => ({
   },
 
   searchPlaces: async (query: string) => {
+    const searchId = ++activeSearchId;
     // Получаем текущие фильтры и местоположение
     const { radius } = useFiltersStore.getState().filters;
     const { userLocation } = get();
@@ -53,6 +56,7 @@ export const usePlacesStore = create<PlacesState>((set, get) => ({
       radius,
       userLocation
     });
+    if (searchId !== activeSearchId) return;
     set({ places: foundPlaces, isSearching: false, selectedPlace: null });
   },
   
@@ -100,7 +104,8 @@ export const usePlacesStore = create<PlacesState>((set, get) => ({
   },
 
   resetToInitial: () => {
-    set(state => ({ places: state.initialPlaces, selectedPlace: null }));
+    activeSearchId += 1;
+    set(state => ({ places: state.initialPlaces, selectedPlace: null, isSearching: false }));
   },
 
   fetchUserLocation: async () => {
