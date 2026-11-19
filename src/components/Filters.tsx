@@ -20,10 +20,12 @@ const Filters = ({ toggleFiltersPanel }: { toggleFiltersPanel: () => void }) => 
   useEffect(() => {
     // Выполняем поиск, если есть текст запроса.
     // Зависимость от debouncedRadius вызовет повторный поиск при изменении радиуса.
-    if (debouncedSearchQuery) {
+    if (debouncedSearchQuery.trim()) {
       searchPlaces(debouncedSearchQuery);
+    } else {
+      resetToInitial();
     }
-  }, [debouncedSearchQuery, debouncedRadius, searchPlaces]); // <-- Добавили debouncedRadius
+  }, [debouncedSearchQuery, debouncedRadius, searchPlaces, resetToInitial]); // <-- Добавили debouncedRadius
 
   const handleClearFilters = () => {
     clearFilters();
