@@ -1,12 +1,26 @@
+import { useState } from 'react';
 import { usePlacesStore } from '../store/usePlacesStore';
 
 const MyLocationButton = () => {
   const { fetchUserLocation } = usePlacesStore();
+  const [isLocating, setIsLocating] = useState(false);
+
+  const handleLocate = async () => {
+    if (isLocating) return;
+    setIsLocating(true);
+    try {
+      await fetchUserLocation();
+    } finally {
+      setIsLocating(false);
+    }
+  };
 
   return (
     <button
-      onClick={() => fetchUserLocation()}
-      className="bg-brand-surface p-3 rounded-full shadow-lg border border-brand-border hover:shadow-xl transition-all hover:bg-brand-primary/10"
+      onClick={handleLocate}
+      disabled={isLocating}
+      aria-busy={isLocating}
+      className="bg-brand-surface p-3 rounded-full shadow-lg border border-brand-border hover:shadow-xl transition-all hover:bg-brand-primary/10 disabled:opacity-50 disabled:cursor-wait"
       aria-label="Мое местоположение"
       title="Мое местоположение"
     >
