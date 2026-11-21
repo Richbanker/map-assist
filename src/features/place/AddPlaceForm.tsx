@@ -35,7 +35,9 @@ const AddPlaceForm = ({ onClose }: AddPlaceFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addPlace({ ...formData, isFavorite: false });
+    const name = formData.name.trim();
+    if (!name) return;
+    addPlace({ ...formData, name, isFavorite: false });
     onClose();
   };
 
@@ -63,6 +65,8 @@ const AddPlaceForm = ({ onClose }: AddPlaceFormProps) => {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Добавить новое место</h2>
             <button
+              type="button"
+              aria-label="Закрыть форму"
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600"
             >
@@ -188,7 +192,8 @@ const AddPlaceForm = ({ onClose }: AddPlaceFormProps) => {
             <div className="flex space-x-3">
               <button
                 type="submit"
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                disabled={!formData.name.trim()}
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Добавить место
               </button>
