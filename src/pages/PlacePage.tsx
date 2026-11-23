@@ -18,8 +18,8 @@ const PlacePage = () => {
 
   useEffect(() => {
     const foundPlace = places.find((p) => p.id === id) || initialPlaces.find((p) => p.id === id);
+    setPlace(foundPlace ?? null);
     if (foundPlace) {
-      setPlace(foundPlace);
       // Принудительно выбираем это место, чтобы карта центрировалась, если мы пришли по прямой ссылке
       selectPlace(foundPlace); 
     }
