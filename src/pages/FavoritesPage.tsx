@@ -67,6 +67,8 @@ const FavoritesPage = () => {
                       </h3>
                     </div>
                     <button
+                      type="button"
+                      aria-label={`Удалить из избранного: ${place.name}`}
                       onClick={() => removeFromFavorites(place.id)}
                       className="text-red-500 hover:text-red-700 transition-colors"
                     >
