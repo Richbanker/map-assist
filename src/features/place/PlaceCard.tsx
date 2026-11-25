@@ -42,16 +42,19 @@ const PlaceCard = ({ place, isSelected = false, onClick, onToggleFavorite }: Pla
   };
 
   return (
-    <Link
-      to={`/place/${place.id}`}
-      onClick={onClick}
-      className={`block p-4 rounded-xl border-2 transition-all cursor-pointer ${
+    <div
+      className={`block p-4 rounded-xl border-2 transition-all ${
         isSelected
           ? 'bg-brand-primary/10 border-brand-primary'
           : 'bg-brand-surface border-brand-border hover:border-brand-secondary/50'
       }`}
     >
       <div className="flex items-start space-x-4">
+        <Link
+          to={`/place/${place.id}`}
+          onClick={onClick}
+          className="flex flex-1 min-w-0 items-start space-x-4 rounded focus-visible:outline focus-visible:outline-2"
+        >
         <div className="flex-shrink-0">
           <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-2xl ${color}`}>
             {icon}
@@ -74,7 +77,11 @@ const PlaceCard = ({ place, isSelected = false, onClick, onToggleFavorite }: Pla
             ))}
           </div>
         </div>
+        </Link>
         <button
+          type="button"
+          aria-label={`Избранное: ${place.name}`}
+          aria-pressed={favorite}
           onClick={handleToggleFavorite}
           className={`p-2 rounded-full transition-colors z-10 relative ${
             favorite ? 'text-red-500 bg-red-100' : 'text-gray-400 hover:bg-gray-100'
@@ -91,7 +98,7 @@ const PlaceCard = ({ place, isSelected = false, onClick, onToggleFavorite }: Pla
           </svg>
         </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
