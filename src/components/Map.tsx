@@ -2,11 +2,13 @@ import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { Icon, LatLngBounds } from 'leaflet';
 import { usePlacesStore } from '../store/usePlacesStore';
 import PlaceMarker from './PlaceMarker';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
+import { useFiltersStore } from '../store/useFiltersStore';
+import { applyFilters } from '../utils/filters';
+import type { Place } from '../types';
 
 // Кастомный компонент для обновления состояния карты
-const MapUpdater = () => {
-  const { selectedPlace, places } = usePlacesStore();
+const MapUpdater = ({ selectedPlace, places }: { selectedPlace: Place | undefined; places: Place[] }) => {
   const map = useMap();
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const MapUpdater = () => {
       });
     } else if (places.length > 0) {
       const bounds = new LatLngBounds(places.map(p => p.coordinates));
-      map.fitBounds(bounds, { padding: [50, 50] });
+      map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
     }
   }, [selectedPlace, places, map]);
 
@@ -34,6 +36,9 @@ const customIcon = new Icon({
 
 const Map = () => {
   const { places, selectPlace, selectedPlace } = usePlacesStore();
+  const filters = useFiltersStore(state => state.filters);
+  const filteredPlaces = useMemo(() => applyFilters(places, filters), [places, filters]);
+  const visibleSelection = filteredPlaces.find(place => place.id === selectedPlace?.id);
   const defaultCenter: [number, number] = [55.7558, 37.6176];
 
   return (
@@ -49,9 +54,9 @@ const Map = () => {
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
         
-        <MapUpdater />
+        <MapUpdater places={filteredPlaces} selectedPlace={visibleSelection} />
 
-        {places.map((place) => (
+        {filteredPlaces.map((place) => (
           <PlaceMarker
             key={place.id}
             place={place}
