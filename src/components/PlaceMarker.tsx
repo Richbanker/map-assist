@@ -50,6 +50,9 @@ const PlaceMarker = ({ place, icon, isSelected = false, onClick }: PlaceMarkerPr
           <div className="flex items-start justify-between mb-2">
             <h3 className="font-semibold text-gray-900 text-sm">{place.name}</h3>
             <button
+              type="button"
+              aria-label={`Избранное: ${place.name}`}
+              aria-pressed={favorite}
               onClick={handleToggleFavorite}
               className={`ml-2 p-1 rounded-full transition-colors ${
                 favorite
@@ -58,6 +61,7 @@ const PlaceMarker = ({ place, icon, isSelected = false, onClick }: PlaceMarkerPr
               }`}
             >
               <svg
+                aria-hidden="true"
                 className="w-4 h-4"
                 fill={favorite ? 'currentColor' : 'none'}
                 stroke="currentColor"
