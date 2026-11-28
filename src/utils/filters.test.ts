@@ -43,8 +43,8 @@ describe('place filters', () => {
   });
 
   it('does not mutate the original list when sorting', () => {
-    expect(sortPlaces(places, 'rating').map((place) => place.id)).toEqual(['2', '1', '3']);
-    expect(places.map((place) => place.id)).toEqual(['2', '1', '3']);
-    expect(sortPlaces([...places].reverse(), 'rating').map((place) => place.id)).toEqual(['2', '1', '3']);
+    const input = [...places].reverse();
+    expect(sortPlaces(input, 'rating').map((place) => place.id)).toEqual(['2', '1', '3']);
+    expect(input.map((place) => place.id)).toEqual(['3', '1', '2']);
   });
 });
